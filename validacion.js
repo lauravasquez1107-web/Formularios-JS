@@ -1,23 +1,41 @@
-
 let usuario = document.getElementById("usuario")
+let password = document.getElementById("password")
 let mensaje = document.getElementById("mensaje")
- usuario.addEventListener("input",function(evento){
-   this.value = this.value.toLowerCase()
-   if(/[^a-z]/g.test(this.value)){
-      mensaje.textContent ="Esta tratando de ingresar un valor incorrecto"
-      this.style.borderColor = "red"
-      this.borderColor = "2px solid"
-   }
-   else if (this.value){
-      mensaje.textContent = "usuario correcto"
-   }
-   else{
-      mensaje.textContent ="campo requerido"
-       this.style.borderColor = "green"
-       this.borderColor = "2px solid"
-   }
-   this.value = this.value.replace(/[^a-z]/g,"")
+let mensajePassword = document.getElementById("mensajePassword")
 
- })
+usuario.addEventListener("input", function () {
 
+    this.value = this.value.toLowerCase()
 
+    if (/[^a-z]/g.test(this.value)) {
+        mensaje.textContent = "Esta tratando de ingresar un valor incorrecto"
+        mensaje.style.color = "red"
+        this.style.borderColor = "red"
+    }
+    else if (this.value.length > 0) {
+        mensaje.textContent = "usuario correcto"
+        mensaje.style.color = "green"
+        this.style.borderColor = "green"
+    }
+    else {
+        mensaje.textContent = "campo requerido"
+        mensaje.style.color = "red"
+    }
+
+    this.value = this.value.replace(/[^a-z]/g, "")
+})
+
+password.addEventListener("input", function () {
+
+    if (this.value.length < 10) {
+        mensajePassword.textContent = "contraseña no valida"
+        mensajePassword.style.color = "red"
+        this.style.borderColor = "red"
+    }
+    else {
+        mensajePassword.textContent = "contraseña valida"
+        mensajePassword.style.color = "green"
+        this.style.borderColor = "green"
+    }
+
+})
